@@ -1,7 +1,7 @@
 export default ({ redirect }) => {
   console.log('auth middleware');
 
-  const loggedIn = false;
+  const loggedIn = true;
 
   if (!loggedIn) {
     return redirect('/');
