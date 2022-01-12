@@ -1,6 +1,4 @@
 export default {
-  target: 'static',
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt',
@@ -40,6 +38,7 @@ export default {
     },
     '@/plugins/dayjs',
     '@/plugins/vtooltip',
+    '@/plugins/axios'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

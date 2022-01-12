@@ -27,7 +27,7 @@
         },
 
        async asyncData({ $axios }) {
-         const products = await $axios.$get('https://jsonplaceholder.typicode.com/posts?_limit=3')
+         const products = await $axios.$get('posts?_limit=3')
          return {
            products,
          }
