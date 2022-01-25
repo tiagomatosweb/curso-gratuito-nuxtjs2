@@ -1,31 +1,25 @@
 <template>
-  <div class="my-4 space-y-4 border-2 border-indigo-200 border-dashed bg-indigo-50 p-5 rounded-xl">
+  <div class="my-4 mt-10 space-y-4">
     <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
       <div>
         <AppFormLabel>Data da transação</AppFormLabel>
-        <AppFormInput
-          v-model="form.date"
-          type="date"
-        />
+        <AppFormInput v-model="localTransaction.date" type="date" />
       </div>
 
       <div>
         <AppFormLabel>Valor</AppFormLabel>
-        <AppFormInput
-          v-model="form.amount"
-          type="number"
-        />
+        <AppFormInput v-model="localTransaction.amount" type="number" />
       </div>
 
       <div>
         <AppFormLabel>Descrição</AppFormLabel>
-        <AppFormInput v-model="form.description" />
+        <AppFormInput v-model="localTransaction.description" />
       </div>
 
       <div>
         <AppFormLabel>Categoria</AppFormLabel>
         <AppFormSelect
-          v-model="form.categoryId"
+          v-model="localTransaction.categoryId"
           :options="categories"
         />
       </div>
@@ -40,8 +34,8 @@
         Cancelar
       </a>
 
-      <AppButton @click="addTransaction">
-        Adicionar
+      <AppButton @click="updateTransaction">
+        Editar
       </AppButton>
     </div>
   </div>
@@ -54,7 +48,7 @@ import AppFormLabel from '~/components/Ui/AppFormLabel';
 import AppFormSelect from '~/components/Ui/AppFormSelect';
 
 export default {
-  name: 'TransactionAdd',
+  name: 'TransactionEdit',
 
   components: {
     AppButton,
@@ -63,13 +57,20 @@ export default {
     AppFormSelect,
   },
 
+  props: {
+    transaction: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+
   data() {
     return {
-      form: {
-        date: '',
-        amount: 0,
-        description: '',
-        categoryId: ''
+      localTransaction: {
+        date: this.transaction.date,
+        description: this.transaction.description,
+        amount: this.transaction.amount,
+        categoryId: this.transaction.category.id,
       },
       categories: [],
     };
@@ -80,18 +81,18 @@ export default {
   },
 
   methods: {
-    addTransaction() {
-      this.$store.dispatch('transactions/addTransaction', this.form).then((response) => {
-        this.$emit('after-add', {
-          ...response,
-          category: this.categories.find(o => o.id == this.form.categoryId)
-        })
-      });
+    updateTransaction() {
+      const data = {
+        date: this.localTransaction.date,
+        description: this.localTransaction.description,
+        amount: this.localTransaction.amount,
+        categoryId: this.localTransaction.categoryId,
+      };
+      this.$store.dispatch('transactions/updateTransaction', { id: this.transaction.id, data })
     },
-
     onCancel() {
       this.$emit('cancel');
-    },
+    }
   },
 };
 </script>

@@ -10,7 +10,7 @@
     {
       "id": 2,
       "description": "Curso Laravel PRO",
-      "amount": 19.90,
+      "amount": 19.9,
       "date": "2022-01-01",
       "categoryId": 1
     },
@@ -37,7 +37,7 @@
     },
     {
       "id": 6,
-      "description": "Cinema",
+      "description": "Cinema2323",
       "amount": 60,
       "date": "2022-01-10",
       "categoryId": 4
@@ -51,10 +51,38 @@
     },
     {
       "id": 8,
-      "description": "Google stcok",
+      "description": "Google stock",
       "amount": 100,
       "date": "2022-01-15",
       "categoryId": 5
+    },
+    {
+      "date": "2022-01-25",
+      "amount": "4",
+      "description": "asd asd asdsad",
+      "categoryId": "2",
+      "id": 9
+    },
+    {
+      "date": "2022-01-13",
+      "amount": "3",
+      "description": "asdasd",
+      "categoryId": "2",
+      "id": 10
+    },
+    {
+      "date": "2022-01-05",
+      "amount": "3",
+      "description": "sda sdasd",
+      "categoryId": "2",
+      "id": 11
+    },
+    {
+      "date": "2022-01-25",
+      "amount": "7",
+      "description": "sorvete",
+      "categoryId": "4",
+      "id": 12
     }
   ],
   "categories": [
@@ -77,6 +105,13 @@
     {
       "id": 5,
       "name": "Investimentos"
+    },
+    {
+      "description": "adsd",
+      "amount": 100,
+      "categoryId": 1,
+      "date": "2022-01-01",
+      "id": 6
     }
   ]
 }
