@@ -3,20 +3,19 @@ export default {
   head: {
     title: 'nuxt',
     htmlAttrs: {
-      lang: 'pt-br'
+      lang: 'pt-br',
+    },
+    bodyAttrs: {
+      class: 'bg-gray-50'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Minha descrição' },
       { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
-    script: [
-      { src: 'cdn/script.js' } // teste
-    ]
   },
 
   publicRuntimeConfig: {
@@ -33,12 +32,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {
-      src: '@/plugins/my-plugin',
-    },
     '@/plugins/dayjs',
-    '@/plugins/vtooltip',
-    '@/plugins/axios'
+    '@/plugins/axios',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -52,7 +47,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
   ],
 
