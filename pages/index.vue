@@ -16,17 +16,9 @@
       @cancel="isAdding = false"
     />
 
-    <div class="mt-6 pb-6 flex items-center space-x-4 border-b border-gray-300">
-      <div>
-        <AppFormLabel>Descrição</AppFormLabel>
-        <AppFormInput />
-      </div>
-
-      <div>
-        <AppFormLabel>Categoria</AppFormLabel>
-        <AppFormSelect :options="[{ name: 'Licença de softwares', id: 1 }]" />
-      </div>
-    </div>
+    <TransactionFilter
+      @filter="onFilter"
+    />
 
     <div class="mt-4">
       <div class="space-y-8">
@@ -59,9 +51,7 @@ import { groupBy, orderBy } from 'lodash';
 import TransactionAdd from '~/components/Transactions/TransactionAdd';
 import Transaction from '~/components/Transactions/Transaction';
 import AppButton from '~/components/Ui/AppButton';
-import AppFormInput from '~/components/Ui/AppFormInput';
-import AppFormLabel from '~/components/Ui/AppFormLabel';
-import AppFormSelect from '~/components/Ui/AppFormSelect';
+import TransactionFilter from '~/components/Transactions/TransactionFilter';
 
 export default {
   name: 'IndexPage',
@@ -70,9 +60,7 @@ export default {
     TransactionAdd,
     Transaction,
     AppButton,
-    AppFormInput,
-    AppFormLabel,
-    AppFormSelect,
+    TransactionFilter,
   },
 
   async asyncData({ store }) {
@@ -103,7 +91,13 @@ export default {
     onUpdate(transaction) {
       const idx = this.transactions.findIndex(o => o.id === transaction.id);
       this.transactions.splice(idx, 1, transaction)
-    }
+    },
+    onFilter(filter) {
+      this.$store.dispatch('transactions/getTransactions', filter)
+      .then((response) => {
+        this.transactions = response;
+      })
+    },
   },
 }
 </script>

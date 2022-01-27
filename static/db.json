@@ -55,6 +55,20 @@
       "amount": "-100",
       "date": "2022-01-15",
       "categoryId": "5"
+    },
+    {
+      "date": "2022-01-18",
+      "amount": "10",
+      "description": "2323",
+      "categoryId": "3",
+      "id": 9
+    },
+    {
+      "date": "2022-01-27",
+      "amount": "-50",
+      "description": "Australia day",
+      "categoryId": 7,
+      "id": 10
     }
   ],
   "categories": [
@@ -79,8 +93,8 @@
       "name": "Investimentos"
     },
     {
-      "name": "teste",
-      "id": 6
+      "name": "Gasto de gasolina",
+      "id": 7
     }
   ]
 }
